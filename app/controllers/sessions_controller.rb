@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     end
   rescue ActiveRecord::RecordNotFound => e
     # byebug
-    render json: { errors: ["user not found"] }, status: :unauthorized
+    render json: { errors: [] }, status: :unauthorized
   end
 
   def destroy
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session.delete :user_id
       head :no_content
     else
-      render json: { errors: ["Not logged in"]}, status: :unauthorized
+      render json: { errors: []}, status: :unauthorized
     end
   end
 end
